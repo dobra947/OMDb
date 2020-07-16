@@ -1,19 +1,16 @@
 <header>
-  <div class="navbar navbar-dark bg-dark box-shadow">
+  <div class="navbar navbar-dark">
     <div class="container d-flex justify-content-between">
-      <a href="#" class="navbar-brand d-flex align-items-center">
+      <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
         OMDb
+      </a>
+      <a [routerLink]="['/list']" class="navbar-brand d-flex align-items-center">
+        My List
       </a>
     </div>
   </div>
 </header>
-
-
-<div class="row">
-  <app-film class="col-md-4"></app-film>
-  <app-film class="col-md-4"></app-film>
-  <app-film class="col-md-4"></app-film>
-  <app-film class="col-md-4"></app-film>
-  <app-film class="col-md-4"></app-film>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-
+<footer class="text-center">Created by Ana Paula Barahona Marín</footer>

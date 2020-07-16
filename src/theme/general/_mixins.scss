@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+.page-item {
+  .page-link {
+    cursor: pointer;
+    background: $base-color;
+    color: $text-color;
+    &:hover{
+      background: $secondary-color;
+    }
+  }
+  .current{
+    background: $secondary-color;
+    &:hover{
+      background: $base-color;
+    }
+  }
+}
+
+.grid {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .item {
+    display: flex;
+    @media (min-width: $breakpoint-lg) {
+      $length: 20%;
+      max-width: $length;
+      flex: 0 0 $length;
+    }
+
+    .card {
+      img {
+        max-width: 100%;
+        object-fit: cover;
+        height: 200px;
+        @media (max-width: $breakpoint-lg) {
+          height: 400px;
+        }
+        @media (max-width: $breakpoint-md) {
+          height: 300px;
+        }
+        @media (max-width: $breakpoint-sm) {
+          height: 250px;
+        }
+      }
+
+      .card-text {
+        min-height: 3rem;
+      }
+    }
+  }
+}
