@@ -1,2 +1,63 @@
+<div *ngIf="film" id="film">
+  <div class="film-background"
+       [ngStyle]="{'background-image': 'url(' + (film.Poster =='N/A'?'/assets/img/no-film.svg':film.Poster) + ')'}"
+  ></div>
+  <div class="film-details row">
+    <div class="col-lg-4">
+      <div class="film-img">
+        <img class="card-img-top" [alt]="film.Title"
+             [src]="film.Poster =='N/A'?'/assets/img/no-film.svg':film.Poster "/>
+        <div *ngIf="film.saved" class="film-saved">
+          <fa-icon [icon]="faHeart"></fa-icon>
+        </div>
+      </div>
+      <div class="film-actions text-center">
+        <a *ngIf="!film.saved" (click)="save($event)" class="btn btn-success text-white">Add</a>
+        <a *ngIf="film.saved" (click)="delete($event)" class="btn btn-danger text-white">Delete</a>
+        <div *ngIf="success" class="text-center alert-success"> {{success}} </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <h1 class="film-title">{{film.Title}}<span [class]="'film-type badge badge-'+film.Type">{{film.Type}}</span></h1>
+      <div class="film-rating row">
+        <div class="col-4">
+          <div class="rating-icon">
+            <span class="icon"><fa-icon [icon]="faStar"></fa-icon></span>
+          </div>
+          <div class="rating-details">
+            <span class="rating">{{film.imdbRating}}/10<br></span>
+            <span class="votes">{{film.imdbVotes}}</span>
+          </div>
+        </div>
 
-Pagina de film
+        <div class="col-8 ratings row">
+          <div *ngFor="let rating of film.Ratings" class="small">
+            <strong>{{rating.Source}}</strong><span>{{rating.Value}}</span>
+          </div>
+        </div>
+      </div>
+      <p class="film-description">{{film.Plot}}</p>
+      <div class="film-data">
+        <strong>Year:</strong>{{film.Year}}<br>
+        <strong>Runtime:</strong>{{film.Runtime}}<br>
+        <strong>Released:</strong>{{film.Released}}<br>
+        <strong>Country:</strong>{{film.Country}}<br>
+        <strong>DVD:</strong>{{film.DVD}}<br>
+        <strong>Production:</strong>{{film.Production}}<br>
+        <strong>Director:</strong>{{film.Director}}<br>
+        <strong>Writer:</strong>{{film.Writer}}<br>
+        <strong>Language:</strong>{{film.Language}}<br>
+        <strong>Website:</strong>{{film.Website}}<br>
+        <strong>Genre:</strong>{{film.Genre}}<br>
+        <strong>Awards:</strong>{{film.Awards}}<br>
+        <strong>BoxOffice:</strong>{{film.BoxOffice}}<br>
+      </div>
+    </div>
+
+  </div>
+  <div class="film-back text-center">
+    <a [routerLink]="['/']" class="btn btn-secondary">Go to search page</a>
+    <a [routerLink]="['/list']" class="btn btn-dark">Go to my list</a>
+  </div>
+</div>
+

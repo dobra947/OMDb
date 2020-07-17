@@ -2,7 +2,7 @@ import {Rating} from "./rating";
 
 export interface Film {
   "Title": string,
-  "Year": string,
+  "Year": string | number,
   "Rated": string,
   "Released": string,
   "Runtime": string,
@@ -26,4 +26,5 @@ export interface Film {
   "Production": string,
   "Website": string,
   "Response": string,
+  "saved"?: boolean
 }

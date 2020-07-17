@@ -1,4 +1,5 @@
-<h1 class="text-center">Search</h1>
+<h1 class="text-center">Search your favorites games, series and movies of IMDb</h1>
+<h2 class="text-center"></h2>
 <div class="input-group">
   <input type="text" class="form-control" name="search" (keyup)="search($event)" placeholder="Search films">
   <div class="input-group-append">
@@ -7,9 +8,12 @@
     </button>
   </div>
 </div>
-
+<div class="hint small">Search games, series, episodes or movies by title</div>
+<p class="text-center mb-30">
+  Save the game, serie, episode or movie in your favorites list
+</p>
 <div *ngIf="error" class="alert alert-danger" >{{error}}</div>
-<app-grid *ngIf="filmlist" [list]="filmlist" [baseUrl]="'/film'"></app-grid>
+<app-grid *ngIf="filmlist" [list]="filmlist" [baseUrl]="'/film'" ></app-grid>
 <nav *ngIf="filmlist"  class="clearfix" aria-label="Page navigation">
   <ul class="pagination float-right">
     <li *ngFor="let page of pages;" class="page-item">
@@ -17,4 +21,3 @@
     </li>
   </ul>
 </nav>
-<div *ngIf="!filmlist">No results</div>

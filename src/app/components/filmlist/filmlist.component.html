@@ -1,4 +1,12 @@
 <h1 class="text-center">Your favorites</h1>
 
-<app-grid [list]="filmlist"></app-grid>
+<div *ngIf="filmlist" class="text-center">
+  <a [routerLink]="['/']" class="btn btn-secondary">Add more</a>
+</div>
+<app-grid *ngIf="filmlist" [list]="filmlist" [callback]="callback" [baseUrl]="'/film'"></app-grid>
+<div *ngIf="!filmlist" class="alert alert-primary text-center">
+  <p>Your list is empty, search your favorite tile and add the item to the list.</p>
+  <a [routerLink]="['/']" class="btn btn-secondary">Go to search page</a>
+</div>
+
 

@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     GridComponent,
     ItemComponent,
     FilmlistComponent,
-    FilmsearchComponent
+    FilmsearchComponent,
   ],
   imports: [
     BrowserModule,

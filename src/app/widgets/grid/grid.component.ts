@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Film} from "../../interfaces/film";
+import {Filmsearch} from "../../interfaces/filmsearch";
 
 @Component({
   selector: 'app-grid',
@@ -8,7 +8,8 @@ import {Film} from "../../interfaces/film";
 })
 export class GridComponent implements OnInit {
 
-  @Input() list: Film[];
+  @Input() list: Filmsearch[];
+  @Input() callback= () => {};
   @Input() baseUrl: string = '/';
 
 

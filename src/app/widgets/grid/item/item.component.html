@@ -1,11 +1,18 @@
 <div class="card">
-  <span class=""></span>
+  <span [class]="'card-type badge badge-'+item.Type">{{item.Type}}</span>
+  <div *ngIf="item.saved" class="card-icon"><fa-icon [icon]="faHeart"></fa-icon></div>
   <img class="card-img-top" [alt]="item.Title" [src]="item.Poster =='N/A'?'/assets/img/no-film.svg':item.Poster "/>
   <div class="card-body">
     <p class="card-text">{{item.Title}}</p>
+    <div *ngIf="error" class="text-center alert-danger">{{error}}</div>
+    <div *ngIf="success" class="text-center alert-success">
+      {{success}}
+    </div>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
         <a [routerLink]="[url,item.imdbID]" class="btn btn-sm btn-outline-secondary">View</a>
+        <a *ngIf="!item.saved" (click)="save($event)" class="btn btn-sm btn-outline-secondary">Add</a>
+        <a *ngIf="item.saved" (click)="delete($event)" class="btn btn-sm btn-outline-secondary">Delete</a>
       </div>
       <small class="text-muted">{{item.Year}}</small>
     </div>

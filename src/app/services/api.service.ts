@@ -12,6 +12,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
 
   }
+
   search(search: string, page: number): Observable<any> {
     let params = this.baseParams();
     params['s'] = search;

@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Filmsearch} from "../../interfaces/filmsearch";
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {HttpClient} from "@angular/common/http";
 import {ApiService} from "../../services/api.service";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-filmsearch',
@@ -62,8 +61,6 @@ export class FilmsearchComponent implements OnInit, OnDestroy {
   pagination(): void {
     this.totalResults
     this.totalPages = this.totalResults / 10;
-    console.log(this.totalResults)
-    console.log(this.totalPages)
     switch (true) {
       case this.currentPage == 1:
         if (this.totalPages > this.currentPage + 1) {
@@ -96,6 +93,7 @@ export class FilmsearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.response.unsubscribe();
+    if (this.response)
+      this.response.unsubscribe();
   }
 }
